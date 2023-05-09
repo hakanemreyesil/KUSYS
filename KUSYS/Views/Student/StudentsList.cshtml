@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Student>
+
+@{
+    ViewData["Title"] = "StudentsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>StudentsList</h1>
+
+<p>
+    <a asp-action="createstudent" asp-controller="Student">Yeni Kayıt</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.FirstName
+                    
+                </td>
+                <td>
+                    @item.LastName
+                   
+                </td>
+                <td>
+                    @item.BirthDate
+                  
+                </td>
+                <td>
+                    @item.CourseId
+                   
+                </td>
+                <td>
+                    @Html.ActionLink("Edit","EditStudent","Student",new{id=item.StudentId},new{@class="btn btn-outline-warning btn-sm"})
+                    <button class="btn btn-outline-info btn-sm" onclick="OpenDetail(@item.StudentId)">Details</button>
+                    <button class="btn btn-outline-danger btn-sm" onclick="DeleteStudent(@item.StudentId,'@item.FirstName'+ ' ' +'@item.LastName')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalbody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function OpenDetail(id) {
+        var myModal = new bootstrap.Modal($("#exampleModal"), {
+            keyboard: false
+        })
+
+        $.ajax({
+            url: "@Url.Action("StudentDetails","Student")",
+            type: "GET",
+            data: { id: id },
+            dataType: 'html',
+            success: function (data) {
+                debugger;
+                $("#modalbody").html(data);
+
+            }
+        });
+
+        myModal.show();
+    }
+
+    function DeleteStudent(id, student) {
+        debugger;
+        var isAllow = window.confirm(student + " kişisini silinecek.");
+
+        if (isAllow) {
+            $.ajax({
+                url: "@Url.Action("DeleteStudent","Student")",
+                type: "DELETE",
+                data: { id: id },
+                success: function (data) {
+
+                    if (!data.success) {
+                        alert(data.message);
+                    }
+                    else {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+    }
+
+</script>

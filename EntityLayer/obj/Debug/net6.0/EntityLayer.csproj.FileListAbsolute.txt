@@ -1,0 +1,12 @@
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\bin\Debug\net6.0\EntityLayer.deps.json
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\bin\Debug\net6.0\EntityLayer.dll
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\bin\Debug\net6.0\EntityLayer.pdb
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfo.cs
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.dll
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\refint\EntityLayer.dll
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\EntityLayer.pdb
+C:\Users\hemre\OneDrive\Masaüstü\KUSYS\EntityLayer\obj\Debug\net6.0\ref\EntityLayer.dll

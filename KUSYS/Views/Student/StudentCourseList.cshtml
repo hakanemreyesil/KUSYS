@@ -1,0 +1,68 @@
+﻿@model IEnumerable<StudentCourseViewModel>
+
+@{
+    ViewData["Title"] = "StudentCourseList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>StudentCourseList</h1>
+
+<p>
+    <a asp-action="createstudent">Yeni Kayıt</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+
+                <td>
+                    @{
+                        string userId = Context.User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+                    }
+                    @if (Context.User.IsInRole("Admin") || item.StudentId.ToString() == userId)
+                    {
+                        <select asp-for="@item.CourseId" asp-items="@ViewBag.courses" class="form-control"></select>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.CourseName)
+                    }
+
+
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
